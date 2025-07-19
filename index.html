@@ -1,96 +1,110 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Trisè • Gioielli artigianali</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
-      background-color: #fdfdfd;
-      color: #2c2c2c;
+      background-color: #fcfcfc;
+      color: #2a2a2a;
     }
 
     header {
-      text-align: center;
-      padding: 3rem 1rem 1rem;
-      background-color: white;
-      border-bottom: 1px solid #eee;
+      position: absolute;
+      width: 100%;
+      top: 0;
+      left: 0;
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 2;
     }
 
     header h1 {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 3.2rem;
+      font-size: 2rem;
       margin: 0;
-      letter-spacing: 1px;
-    }
-
-    nav {
-      margin-top: 1rem;
     }
 
     nav a {
-      margin: 0 1rem;
-      color: #555;
+      margin-left: 1.5rem;
+      color: #fff;
       text-decoration: none;
-      font-weight: 600;
+      font-weight: 500;
+    }
+
+    .hero {
+      position: relative;
+      height: 100vh;
+      background: url('https://via.placeholder.com/1600x900') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.3);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+      padding: 2rem;
+    }
+
+    .hero-content h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero-content p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #f0f0f0;
     }
 
     main {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 4rem 2rem;
+      padding: 5rem 2rem;
     }
 
     section {
-      margin-bottom: 5rem;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 1s ease;
     }
 
-    .manifesto h2 {
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .collection {
+      text-align: center;
+    }
+
+    .collection h3 {
+      font-family: 'Cormorant Garamond', serif;
       font-size: 2rem;
-      font-family: 'Cormorant Garamond', serif;
-      text-align: center;
-      margin-bottom: 1rem;
-    }
-
-    .manifesto p {
-      text-align: center;
-      font-size: 1.1rem;
-      max-width: 700px;
-      margin: 0 auto;
-      line-height: 1.6;
-      color: #555;
-    }
-
-    .bio {
-      text-align: center;
-    }
-
-    .bio img {
-      width: 240px;
-      border-radius: 50%;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.1);
-    }
-
-    .bio h3 {
-      font-family: 'Cormorant Garamond', serif;
-      margin-top: 1rem;
-      font-size: 1.6rem;
-    }
-
-    .bio p {
-      max-width: 650px;
-      margin: 1rem auto;
-      line-height: 1.6;
-      color: #666;
-    }
-
-    .collection h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
+      margin-bottom: 2rem;
     }
 
     .collection-grid {
@@ -99,38 +113,46 @@
       gap: 2rem;
     }
 
-    .item {
-      background-color: white;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-      transition: transform 0.3s ease;
+    .card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
     }
 
-    .item:hover {
-      transform: scale(1.02);
-    }
-
-    .item img {
+    .card img {
       width: 100%;
-      height: auto;
-      border-radius: 8px 8px 0 0;
+      display: block;
+      transition: transform 0.4s ease;
     }
 
-    .item-info {
+    .card:hover img {
+      transform: scale(1.05);
+    }
+
+    .card-info {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
       padding: 1rem;
-    }
-
-    .item-info h4 {
-      font-size: 1.2rem;
-      margin: 0.5rem 0;
+      background: rgba(255,255,255,0.85);
+      font-size: 1rem;
+      color: #333;
     }
 
     footer {
       text-align: center;
-      padding: 2rem;
+      padding: 3rem 2rem;
+      background-color: #f3f3f3;
       font-size: 0.9rem;
-      color: #888;
-      background-color: #f7f7f7;
+      color: #777;
+    }
+
+    @media (max-width: 768px) {
+      header nav {
+        display: none;
+      }
     }
   </style>
 </head>
@@ -139,57 +161,76 @@
   <header>
     <h1>Trisè</h1>
     <nav>
-      <a href="#">Home</a>
-      <a href="#">Manifesto</a>
-      <a href="#">Collezione</a>
-      <a href="#">Chi siamo</a>
-      <a href="#">Contatti</a>
+      <a href="#collezione">Collezione</a>
+      <a href="#manifesto">Manifesto</a>
+      <a href="#contatti">Contatti</a>
     </nav>
   </header>
 
+  <div class="hero">
+    <div class="overlay"></div>
+    <div class="hero-content">
+      <h2>Il dettaglio che parla di te.</h2>
+      <p>Trisè è l'incontro tra emozione e artigianato. Gioielli pensati per chi ama ciò che è unico, fatto a mano e pieno di significato.</p>
+    </div>
+  </div>
+
   <main>
-    <section class="manifesto">
-      <h2>Fatto a mano da mani che raccontano storie</h2>
-      <p>Trisè nasce dal desiderio di creare qualcosa di autentico, luminoso e personale. Ogni braccialetto è il risultato di un incontro: tra passione, dettagli e il legame speciale tra tre anime creative.</p>
-    </section>
-
-    <section class="bio">
-      <img src="https://via.placeholder.com/240" alt="Foto Team">
-      <h3>Chi siamo</h3>
-      <p>Tommaso, Anna e Greta: tre amici, tre visioni, una sola missione — trasformare le emozioni in piccoli gioielli da indossare. Ogni pezzo è fatto a mano con cura, come fosse un messaggio da portare con sé.</p>
-    </section>
-
-    <section class="collection">
-      <h2>Collezione Trisè</h2>
+    <section id="collezione" class="collection">
+      <h3>La Collezione Trisè</h3>
       <div class="collection-grid">
-        <div class="item">
-          <img src="https://via.placeholder.com/400x300" alt="Bracciale Essenza">
-          <div class="item-info">
-            <h4>Essenza</h4>
-            <p>Perline opache e dettagli satinati. Equilibrato e naturale.</p>
+        <div class="card">
+          <img src="https://via.placeholder.com/400x300" alt="Bracciale Rugiada" />
+          <div class="card-info">
+            <strong>Rugiada</strong> • Fresco, perlato, delicato
           </div>
         </div>
-        <div class="item">
-          <img src="https://via.placeholder.com/400x300" alt="Bracciale Notte">
-          <div class="item-info">
-            <h4>Notte</h4>
-            <p>Toni scuri, riflessi lunari. Eleganza misteriosa.</p>
+        <div class="card">
+          <img src="https://via.placeholder.com/400x300" alt="Bracciale Nodo" />
+          <div class="card-info">
+            <strong>Nodo</strong> • Simbolo di legame e stile
           </div>
         </div>
-        <div class="item">
-          <img src="https://via.placeholder.com/400x300" alt="Bracciale Alba">
-          <div class="item-info">
-            <h4>Alba</h4>
-            <p>Colori tenui e luminosi come un nuovo inizio.</p>
+        <div class="card">
+          <img src="https://via.placeholder.com/400x300" alt="Bracciale Oro Soffice" />
+          <div class="card-info">
+            <strong>Oro Soffice</strong> • Luce discreta, anima brillante
           </div>
         </div>
       </div>
+    </section>
+
+    <section id="manifesto">
+      <h3 style="text-align:center;font-family:'Cormorant Garamond',serif;font-size:2rem;">Manifesto</h3>
+      <p style="text-align:center;max-width:700px;margin:0 auto;color:#555;line-height:1.6;">
+        Ogni bracciale Trisè nasce da un gesto consapevole. È un sussurro, un messaggio, un pezzo di anima. <br />Fatto a mano da Tommaso, Anna e Greta — cucito con tempo, cura e sincerità.
+      </p>
+    </section>
+
+    <section id="contatti" style="text-align:center;">
+      <h3 style="font-family:'Cormorant Garamond',serif;font-size:2rem;">Contatti</h3>
+      <p>Scrivici su Instagram: <strong>@trise_lab</strong><br />Oppure via email: <strong>info@trise.it</strong></p>
     </section>
   </main>
 
   <footer>
     &copy; 2025 Trisè • Fatto a mano in Emilia-Romagna
   </footer>
+
+  <script>
+    // Sezioni in evidenza quando appaiono
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll("section").forEach(sec => {
+      observer.observe(sec);
+    });
+  </script>
 
 </body>
 </html>
