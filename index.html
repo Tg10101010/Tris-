@@ -3,27 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Tris • Gioielli artigianali</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <title>Trisè • Gioielli artigianali</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
-      background-color: #fafafa;
-      color: #333;
+      background-color: #fdfdfd;
+      color: #2c2c2c;
     }
 
     header {
-      padding: 2.5rem;
+      text-align: center;
+      padding: 3rem 1rem 1rem;
       background-color: white;
       border-bottom: 1px solid #eee;
-      text-align: center;
     }
 
     header h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 3rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.2rem;
       margin: 0;
+      letter-spacing: 1px;
+    }
+
+    nav {
+      margin-top: 1rem;
     }
 
     nav a {
@@ -34,55 +39,70 @@
     }
 
     main {
-      padding: 4rem 1.5rem;
       max-width: 1200px;
-      margin: auto;
+      margin: 0 auto;
+      padding: 4rem 2rem;
     }
 
-    .hero {
+    section {
+      margin-bottom: 5rem;
+    }
+
+    .manifesto h2 {
+      font-size: 2rem;
+      font-family: 'Cormorant Garamond', serif;
       text-align: center;
-      margin-bottom: 4rem;
+      margin-bottom: 1rem;
     }
 
-    .hero img {
-      max-width: 300px;
-      border-radius: 10px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    .manifesto p {
+      text-align: center;
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.6;
+      color: #555;
     }
 
-    .hero h2 {
+    .bio {
+      text-align: center;
+    }
+
+    .bio img {
+      width: 240px;
+      border-radius: 50%;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+    }
+
+    .bio h3 {
+      font-family: 'Cormorant Garamond', serif;
+      margin-top: 1rem;
+      font-size: 1.6rem;
+    }
+
+    .bio p {
+      max-width: 650px;
+      margin: 1rem auto;
+      line-height: 1.6;
+      color: #666;
+    }
+
+    .collection h2 {
+      font-family: 'Cormorant Garamond', serif;
       font-size: 1.8rem;
-      margin: 1rem 0;
-      font-family: 'Playfair Display', serif;
+      margin-bottom: 1rem;
     }
 
-    .button {
-      padding: 0.9rem 1.8rem;
-      background-color: black;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: 600;
-      transition: background-color 0.3s ease;
-    }
-
-    .button:hover {
-      background-color: #222;
-    }
-
-    .collection {
+    .collection-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 2rem;
-      margin-top: 2rem;
     }
 
     .item {
       background-color: white;
       border-radius: 8px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-      overflow: hidden;
       transition: transform 0.3s ease;
     }
 
@@ -93,6 +113,7 @@
     .item img {
       width: 100%;
       height: auto;
+      border-radius: 8px 8px 0 0;
     }
 
     .item-info {
@@ -100,24 +121,26 @@
     }
 
     .item-info h4 {
-      margin: 0.5rem 0;
       font-size: 1.2rem;
+      margin: 0.5rem 0;
     }
 
     footer {
       text-align: center;
       padding: 2rem;
       font-size: 0.9rem;
-      color: #777;
+      color: #888;
+      background-color: #f7f7f7;
     }
   </style>
 </head>
 <body>
 
   <header>
-    <h1>Tris</h1>
+    <h1>Trisè</h1>
     <nav>
       <a href="#">Home</a>
+      <a href="#">Manifesto</a>
       <a href="#">Collezione</a>
       <a href="#">Chi siamo</a>
       <a href="#">Contatti</a>
@@ -125,35 +148,39 @@
   </header>
 
   <main>
-    <section class="hero">
-      <img src="https://via.placeholder.com/300" alt="Bracciale artigianale">
-      <h2>Gioielli realizzati da mani che raccontano storie</h2>
-      <p>Ogni pezzo firmato Tris è un piccolo gesto d'amore creato da Tommaso, Anna e Greta.</p>
-      <button class="button">Scopri la collezione</button>
+    <section class="manifesto">
+      <h2>Fatto a mano da mani che raccontano storie</h2>
+      <p>Trisè nasce dal desiderio di creare qualcosa di autentico, luminoso e personale. Ogni braccialetto è il risultato di un incontro: tra passione, dettagli e il legame speciale tra tre anime creative.</p>
     </section>
 
-    <section>
-      <h3>Collezione</h3>
-      <div class="collection">
+    <section class="bio">
+      <img src="https://via.placeholder.com/240" alt="Foto Team">
+      <h3>Chi siamo</h3>
+      <p>Tommaso, Anna e Greta: tre amici, tre visioni, una sola missione — trasformare le emozioni in piccoli gioielli da indossare. Ogni pezzo è fatto a mano con cura, come fosse un messaggio da portare con sé.</p>
+    </section>
+
+    <section class="collection">
+      <h2>Collezione Trisè</h2>
+      <div class="collection-grid">
         <div class="item">
-          <img src="https://via.placeholder.com/400x300" alt="Bracciale Mare">
+          <img src="https://via.placeholder.com/400x300" alt="Bracciale Essenza">
           <div class="item-info">
-            <h4>Bracciale Mare</h4>
-            <p>Ispirato alle onde e ai colori dell’estate.</p>
+            <h4>Essenza</h4>
+            <p>Perline opache e dettagli satinati. Equilibrato e naturale.</p>
           </div>
         </div>
         <div class="item">
-          <img src="https://via.placeholder.com/400x300" alt="Bracciale Terra">
+          <img src="https://via.placeholder.com/400x300" alt="Bracciale Notte">
           <div class="item-info">
-            <h4>Bracciale Terra</h4>
-            <p>Toni naturali e materiali eco per uno stile sobrio.</p>
+            <h4>Notte</h4>
+            <p>Toni scuri, riflessi lunari. Eleganza misteriosa.</p>
           </div>
         </div>
         <div class="item">
-          <img src="https://via.placeholder.com/400x300" alt="Bracciale Luce">
+          <img src="https://via.placeholder.com/400x300" alt="Bracciale Alba">
           <div class="item-info">
-            <h4>Bracciale Luce</h4>
-            <p>Perline scintillanti, perfetto per momenti speciali.</p>
+            <h4>Alba</h4>
+            <p>Colori tenui e luminosi come un nuovo inizio.</p>
           </div>
         </div>
       </div>
@@ -161,7 +188,7 @@
   </main>
 
   <footer>
-    &copy; 2025 Tris • Design artigianale da Emilia-Romagna
+    &copy; 2025 Trisè • Fatto a mano in Emilia-Romagna
   </footer>
 
 </body>
